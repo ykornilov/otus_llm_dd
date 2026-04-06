@@ -6,7 +6,7 @@ on:
     paths:
       - "hw_09/**"
   pull_request:
-    branches: [main]
+    branches: [main, hw10]
     paths:
       - "hw_09/**"
   workflow_dispatch:  # позволяет запускать вручную из GitHub UI

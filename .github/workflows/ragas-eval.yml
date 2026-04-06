@@ -31,7 +31,7 @@ jobs:
         run: pip install -r hw_09/requirements.txt
 
       - name: Download NLTK data
-        run: python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
+        run: python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('stopwords')"
 
       - name: Run unit tests
         run: pytest hw_09/tests/test_unit.py -v --tb=short
@@ -66,7 +66,7 @@ jobs:
           key: hf-multilingual-e5-large
 
       - name: Download NLTK data
-        run: python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
+        run: python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('stopwords')"
 
       - name: Run Ragas evaluation (quality gates)
         run: pytest hw_09/tests/test_ragas.py -v --tb=short

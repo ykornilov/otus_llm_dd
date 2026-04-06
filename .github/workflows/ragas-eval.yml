@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r hw_09/requirements.txt
 
+      - name: Download NLTK data
+        run: python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
+
       - name: Run unit tests
         run: pytest hw_09/tests/test_unit.py -v --tb=short
 

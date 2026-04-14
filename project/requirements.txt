@@ -1,0 +1,23 @@
+# LLM
+openai>=1.30
+
+# RAG services
+fastapi>=0.111
+uvicorn[standard]>=0.29
+httpx>=0.27
+pydantic>=2.7
+
+# Embeddings
+sentence-transformers>=3.0
+torch>=2.3          # MPS support on Apple Silicon
+
+# Vector index
+faiss-cpu>=1.8      # CPU build works on MPS too (FAISS search runs on CPU)
+
+# Lexical search
+rank-bm25>=0.2
+pymorphy3>=2.0       # Russian lemmatization for BM25 (Python 3.11+ compatible fork of pymorphy2)
+
+# Misc
+numpy>=1.26
+python-dotenv>=1.0

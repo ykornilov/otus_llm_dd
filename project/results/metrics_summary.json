@@ -1,0 +1,272 @@
+[
+  {
+    "experiment": "exp1_full_prompt",
+    "n": 59,
+    "exact_match_rate": 0.8814,
+    "llm_judge_avg": 9.3898,
+    "prompt_tokens_avg": 22062.1186,
+    "completion_tokens_avg": 297.6271,
+    "latency_s_avg": 7.9026,
+    "cost_usd_total": 0.548762,
+    "index_build_ms_avg": null,
+    "by_category": {
+      "aggregation": {
+        "n": 7,
+        "exact_match_rate": 0.8571,
+        "llm_judge_avg": 10
+      },
+      "arithmetic": {
+        "n": 5,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "combined": {
+        "n": 10,
+        "exact_match_rate": 0.7,
+        "llm_judge_avg": 8.7
+      },
+      "datetime": {
+        "n": 7,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "lod": {
+        "n": 6,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "logic": {
+        "n": 8,
+        "exact_match_rate": 0.875,
+        "llm_judge_avg": 9.25
+      },
+      "markup": {
+        "n": 4,
+        "exact_match_rate": 0.75,
+        "llm_judge_avg": 8.25
+      },
+      "string": {
+        "n": 7,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "window": {
+        "n": 5,
+        "exact_match_rate": 0.8,
+        "llm_judge_avg": 8
+      }
+    }
+  },
+  {
+    "experiment": "exp2_stateful_bge-m3",
+    "n": 59,
+    "exact_match_rate": 0.8136,
+    "llm_judge_avg": 9.1864,
+    "prompt_tokens_avg": 3003.4237,
+    "completion_tokens_avg": 324.0508,
+    "latency_s_avg": 6.7633,
+    "cost_usd_total": 0.101471,
+    "index_build_ms_avg": null,
+    "by_category": {
+      "aggregation": {
+        "n": 7,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "arithmetic": {
+        "n": 5,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "combined": {
+        "n": 10,
+        "exact_match_rate": 0.5,
+        "llm_judge_avg": 8.2
+      },
+      "datetime": {
+        "n": 7,
+        "exact_match_rate": 0.8571,
+        "llm_judge_avg": 9.1429
+      },
+      "lod": {
+        "n": 6,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "logic": {
+        "n": 8,
+        "exact_match_rate": 0.875,
+        "llm_judge_avg": 10
+      },
+      "markup": {
+        "n": 4,
+        "exact_match_rate": 0.25,
+        "llm_judge_avg": 5.75
+      },
+      "string": {
+        "n": 7,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "window": {
+        "n": 5,
+        "exact_match_rate": 0.8,
+        "llm_judge_avg": 8.6
+      }
+    }
+  },
+  {
+    "experiment": "exp2_stateful_e5-large",
+    "n": 59,
+    "exact_match_rate": 0.7288,
+    "llm_judge_avg": 8.4746,
+    "prompt_tokens_avg": 2876.1864,
+    "completion_tokens_avg": 336.6271,
+    "latency_s_avg": 7.1346,
+    "cost_usd_total": 0.099657,
+    "index_build_ms_avg": null,
+    "by_category": {
+      "aggregation": {
+        "n": 7,
+        "exact_match_rate": 0.8571,
+        "llm_judge_avg": 9.1429
+      },
+      "arithmetic": {
+        "n": 5,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "combined": {
+        "n": 10,
+        "exact_match_rate": 0.5,
+        "llm_judge_avg": 7.9
+      },
+      "datetime": {
+        "n": 7,
+        "exact_match_rate": 0.5714,
+        "llm_judge_avg": 7.1429
+      },
+      "lod": {
+        "n": 6,
+        "exact_match_rate": 0.6667,
+        "llm_judge_avg": 7.8333
+      },
+      "logic": {
+        "n": 8,
+        "exact_match_rate": 0.875,
+        "llm_judge_avg": 10
+      },
+      "markup": {
+        "n": 4,
+        "exact_match_rate": 0.25,
+        "llm_judge_avg": 5
+      },
+      "string": {
+        "n": 7,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "window": {
+        "n": 5,
+        "exact_match_rate": 0.8,
+        "llm_judge_avg": 8
+      }
+    }
+  },
+  {
+    "experiment": "exp2_stateful_qodo-1.5b",
+    "n": 59,
+    "exact_match_rate": 0.8814,
+    "llm_judge_avg": 9.3559,
+    "prompt_tokens_avg": 2930.0847,
+    "completion_tokens_avg": 333.3898,
+    "latency_s_avg": 6.5073,
+    "cost_usd_total": 0.10062,
+    "index_build_ms_avg": null,
+    "by_category": {
+      "aggregation": {
+        "n": 7,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "arithmetic": {
+        "n": 5,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "combined": {
+        "n": 10,
+        "exact_match_rate": 0.8,
+        "llm_judge_avg": 9.6
+      },
+      "datetime": {
+        "n": 7,
+        "exact_match_rate": 0.8571,
+        "llm_judge_avg": 9.1429
+      },
+      "lod": {
+        "n": 6,
+        "exact_match_rate": 0.6667,
+        "llm_judge_avg": 7.5
+      },
+      "logic": {
+        "n": 8,
+        "exact_match_rate": 0.875,
+        "llm_judge_avg": 9.625
+      },
+      "markup": {
+        "n": 4,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "string": {
+        "n": 7,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "window": {
+        "n": 5,
+        "exact_match_rate": 0.8,
+        "llm_judge_avg": 8
+      }
+    }
+  },
+  {
+    "experiment": "exp3_stateless_bge-m3",
+    "n": 5,
+    "exact_match_rate": 0.8,
+    "llm_judge_avg": 8.6,
+    "prompt_tokens_avg": 3043,
+    "completion_tokens_avg": 349.6,
+    "latency_s_avg": 30.3876,
+    "cost_usd_total": 0.008883,
+    "index_build_ms_avg": 24918.0,
+    "by_category": {
+      "arithmetic": {
+        "n": 1,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "lod": {
+        "n": 1,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "markup": {
+        "n": 1,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "string": {
+        "n": 1,
+        "exact_match_rate": 1.0,
+        "llm_judge_avg": 10
+      },
+      "window": {
+        "n": 1,
+        "exact_match_rate": 0.0,
+        "llm_judge_avg": 3
+      }
+    }
+  }
+]

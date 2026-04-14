@@ -1,0 +1,576 @@
+[
+  {
+    "id": 1,
+    "category": "arithmetic",
+    "question": "Вычисли продолжительность фильма в часах",
+    "formula": "[Продолжительность, мин] / 60",
+    "alternatives": [
+      "ROUND([Продолжительность, мин] / 60, 1)",
+      "FLOAT([Продолжительность, мин]) / 60",
+      "[Продолжительность, мин] / 60.0",
+      "DIV([Продолжительность, мин], 60)"
+    ],
+    "notes": "деление integer на константу"
+  },
+  {
+    "id": 2,
+    "category": "arithmetic",
+    "question": "Округли рейтинг до одного знака после запятой",
+    "formula": "ROUND([Рейтинг], 1)",
+    "alternatives": [],
+    "notes": "ROUND с двумя аргументами"
+  },
+  {
+    "id": 3,
+    "category": "arithmetic",
+    "question": "Найди разброс рейтингов — разницу максимального и минимального",
+    "formula": "MAX([Рейтинг]) - MIN([Рейтинг])",
+    "alternatives": [],
+    "notes": "вычитание двух агрегатов"
+  },
+  {
+    "id": 4,
+    "category": "arithmetic",
+    "question": "Вычисли квадратный корень из числа голосов",
+    "formula": "SQRT([Число голосов])",
+    "alternatives": [],
+    "notes": "SQRT от measure"
+  },
+  {
+    "id": 5,
+    "category": "arithmetic",
+    "question": "Определи последнюю цифру года выпуска фильма",
+    "formula": "[Год выпуска] % 10",
+    "alternatives": [
+      "RIGHT(STR([Год выпуска]), 1)",
+      "MOD([Год выпуска], 10)"
+    ],
+    "notes": "оператор остатка от деления"
+  },
+  {
+    "id": 6,
+    "category": "string",
+    "question": "Переведи название фильма в верхний регистр",
+    "formula": "UPPER([Название])",
+    "alternatives": ["BOLD(UPPER([Название]))"],
+    "notes": "UPPER"
+  },
+  {
+    "id": 7,
+    "category": "string",
+    "question": "Посчитай количество символов в названии фильма",
+    "formula": "LEN([Название])",
+    "alternatives": [],
+    "notes": "LEN"
+  },
+  {
+    "id": 8,
+    "category": "string",
+    "question": "Возьми первые 20 символов названия фильма",
+    "formula": "LEFT([Название], 20)",
+    "alternatives": [],
+    "notes": "LEFT с числом символов"
+  },
+  {
+    "id": 9,
+    "category": "string",
+    "question": "Проверь, содержит ли список жанров слово «драма»",
+    "formula": "CONTAINS([Жанры (списком)], \"драма\")",
+    "alternatives": ["ICONTAINS([Жанры (списком)], \"драма\")"],
+    "notes": "CONTAINS возвращает Boolean"
+  },
+  {
+    "id": 10,
+    "category": "string",
+    "question": "Соедини название фильма и год выпуска в формате «Название (Год)»",
+    "formula": "CONCAT([Название], \" (\", STR([Год выпуска]), \")\")",
+    "alternatives": [
+      "[Название] + \" (\" + STR([Год выпуска]) + \")\"",
+      "IF [Год выпуска] IS NOT NULL\n    THEN CONCAT([Название], \" (\", STR([Год выпуска]), \")\")\n    ELSE [Название]\nEND"
+    ],
+    "notes": "CONCAT + STR для приведения integer; альтернатива — оператор + для строк"
+  },
+  {
+    "id": 11,
+    "category": "string",
+    "question": "Убери лишние пробелы по краям поля «Годы»",
+    "formula": "TRIM([Годы])",
+    "alternatives": [],
+    "notes": "TRIM"
+  },
+  {
+    "id": 12,
+    "category": "string",
+    "question": "Замени запятую на « | » в списке жанров",
+    "formula": "REPLACE([Жанры (списком)], \",\", \" | \")",
+    "alternatives": [],
+    "notes": "REPLACE"
+  },
+  {
+    "id": 13,
+    "category": "datetime",
+    "question": "Получи текущий год",
+    "formula": "YEAR(TODAY())",
+    "alternatives": [],
+    "notes": "YEAR(TODAY())"
+  },
+  {
+    "id": 14,
+    "category": "datetime",
+    "question": "Посчитай возраст фильма — сколько лет прошло с момента выпуска",
+    "formula": "YEAR(TODAY()) - [Год выпуска]",
+    "alternatives": [
+      "MAX(0, YEAR(TODAY()) - [Год выпуска])"
+    ],
+    "notes": "арифметика с YEAR(TODAY()) и integer-полем"
+  },
+  {
+    "id": 15,
+    "category": "datetime",
+    "question": "Получи текущую дату",
+    "formula": "TODAY()",
+    "alternatives": [],
+    "notes": "TODAY()"
+  },
+  {
+    "id": 16,
+    "category": "datetime",
+    "question": "Вычисли начало текущего года",
+    "formula": "DATETRUNC(TODAY(), \"year\")",
+    "alternatives": [],
+    "notes": "DATETRUNC с unit=year"
+  },
+  {
+    "id": 17,
+    "category": "datetime",
+    "question": "Получи дату семь дней назад",
+    "formula": "TODAY() - 7",
+    "alternatives": [
+      "DATEADD(TODAY(), \"day\", -7)"
+    ],
+    "notes": "Date - Integer = дата на N дней раньше"
+  },
+  {
+    "id": 18,
+    "category": "datetime",
+    "question": "Определи номер текущей недели в году",
+    "formula": "WEEK(TODAY())",
+    "alternatives": [
+      "WEEK(NOW())"
+    ],
+    "notes": "WEEK"
+  },
+  {
+    "id": 19,
+    "category": "datetime",
+    "question": "Получи начало текущего месяца",
+    "formula": "DATETRUNC(TODAY(), \"month\")",
+    "alternatives": [
+      "DATETRUNC(NOW(), \"month\")"
+    ],
+    "notes": "DATETRUNC с unit=month"
+  },
+  {
+    "id": 20,
+    "category": "logic",
+    "question": "Классифицируй фильм по рейтингу: «Высокий» (≥8), «Средний» (≥6), «Низкий»",
+    "formula": "IF [Рейтинг] >= 8\n    THEN \"Высокий\"\nELSEIF [Рейтинг] >= 6\n    THEN \"Средний\"\nELSE\n    \"Низкий\"\nEND",
+    "alternatives": [],
+    "notes": "IF/ELSEIF/ELSE — условия с >=, нельзя CASE"
+  },
+  {
+    "id": 21,
+    "category": "logic",
+    "question": "Определи, отечественный фильм или зарубежный (по полю «Страна 1»)",
+    "formula": "IF [Страна 1] = \"Россия\" THEN \"Отечественный\" ELSE \"Зарубежный\" END",
+    "alternatives": [
+      "CASE [Страна 1] WHEN \"Россия\" THEN \"Отечественный\" ELSE \"Зарубежный\" END",
+      "CASE [Страна 1]\n    WHEN \"Россия\" THEN \"Отечественный\"\n    ELSE \"Зарубежный\"\nEND",
+      "CASE [Страна 1]\n    WHEN \"Россия\" THEN \"Отечественный\"\n    WHEN \"СССР\" THEN \"Отечественный\"\n    ELSE \"Зарубежный\"\nEND"
+    ],
+    "notes": "IF однострочный; альтернатива — CASE для точного сравнения строк"
+  },
+  {
+    "id": 22,
+    "category": "logic",
+    "question": "Пометь фильмы, вышедшие после 2010 года, как «Современный», остальные — «Классика»",
+    "formula": "IF [Год выпуска] > 2010 THEN \"Современный\" ELSE \"Классика\" END",
+    "alternatives": [
+      "IF [Год выпуска] > 2010\n    THEN \"Современный\"\nELSE\n    \"Классика\"\nEND"
+    ],
+    "notes": "IF с numeric сравнением; CASE не подходит — условие с >"
+  },
+  {
+    "id": 23,
+    "category": "logic",
+    "question": "Переведи тип контента на краткое обозначение: «Фильм» → «Ф», «Сериал» → «С», «Мини-сериал» → «МС», остальное → «—»",
+    "formula": "CASE [Тип]\n    WHEN \"Фильм\" THEN \"Ф\"\n    WHEN \"Сериал\" THEN \"С\"\n    WHEN \"Мини-сериал\" THEN \"МС\"\n    ELSE \"—\"\nEND",
+    "alternatives": [
+      "IF [Тип] = \"Фильм\" THEN \"Ф\" ELSEIF [Тип] = \"Сериал\" THEN \"С\" ELSEIF [Тип] = \"Мини-сериал\" THEN \"МС\" ELSE \"—\" END"
+    ],
+    "notes": "CASE — только точные значения, не условия; IF/ELSEIF — эквивалентная альтернатива"
+  },
+  {
+    "id": 24,
+    "category": "logic",
+    "question": "Определи, входит ли страна происхождения в список кинодержав: США, Великобритания, Франция",
+    "formula": "CONTAINS([Страны (списком)], \"США\") OR\n    CONTAINS([Страны (списком)], \"Великобритания\") OR\n    CONTAINS([Страны (списком)], \"Франция\")",
+    "alternatives": [
+      "[Страна 1] IN (\"США\", \"Великобритания\", \"Франция\") OR\n    [Страна 2] IN (\"США\", \"Великобритания\", \"Франция\") OR\n    [Страна 3] IN (\"США\", \"Великобритания\", \"Франция\")",
+      "CASE [Страна 1]\n    WHEN \"США\" THEN \"Да\"\n    WHEN \"Великобритания\" THEN \"Да\"\n    WHEN \"Франция\" THEN \"Да\"\n    ELSE \"Нет\"\nEND",
+      "CASE [Страна 1]\n    WHEN \"США\" THEN \"Кинодержава\"\n    WHEN \"Великобритания\" THEN \"Кинодержава\"\n    WHEN \"Франция\" THEN \"Кинодержава\"\n    ELSE \"Другая страна\"\nEND"
+    ],
+    "notes": "оператор IN; альтернатива — цепочка OR"
+  },
+  {
+    "id": 25,
+    "category": "logic",
+    "question": "Классифицируй фильм по продолжительности: «Длинный» (>120 мин), «Средний» (>90 мин), «Короткий»",
+    "formula": "IF [Продолжительность, мин] > 120\n    THEN \"Длинный\"\nELSEIF [Продолжительность, мин] > 90\n    THEN \"Средний\"\nELSE\n    \"Короткий\"\nEND",
+    "alternatives": [],
+    "notes": "IF/ELSEIF для числовых диапазонов"
+  },
+  {
+    "id": 26,
+    "category": "logic",
+    "question": "Проверь, является ли поле «Жанр 2» пустым (NULL)",
+    "formula": "ISNULL([Жанр 2])",
+    "alternatives": [
+      "ISNULL([Жанр 2]) OR [Жанр 2] = \"\""
+    ],
+    "notes": "ISNULL возвращает Boolean"
+  },
+  {
+    "id": 27,
+    "category": "logic",
+    "question": "Если поле «Жанр 2» пустое — подставь значение «нет»",
+    "formula": "IFNULL([Жанр 2], \"нет\")",
+    "alternatives": [
+      "IF ISNULL([Жанр 2])\n    THEN \"нет\"\nELSE\n    [Жанр 2]\nEND",
+      "IF(ISNULL([Жанр 2]) OR [Жанр 2] = \"\", \"нет\", [Жанр 2])",
+      "IF [Жанр 2] = \"\"\n    THEN \"нет\"\nELSE\n    [Жанр 2]\nEND"
+    ],
+    "notes": "IFNULL; альтернатива — IF + ISNULL"
+  },
+  {
+    "id": 28,
+    "category": "aggregation",
+    "question": "Посчитай средний рейтинг по всем фильмам",
+    "formula": "AVG([Рейтинг])",
+    "alternatives": [
+      "AVG_IF([Рейтинг], [Тип] = \"Фильм\")"
+    ],
+    "notes": "базовый AVG"
+  },
+  {
+    "id": 29,
+    "category": "aggregation",
+    "question": "Посчитай количество уникальных названий фильмов",
+    "formula": "COUNTD([Название])",
+    "alternatives": [],
+    "notes": "COUNTD"
+  },
+  {
+    "id": 30,
+    "category": "aggregation",
+    "question": "Найди максимальный рейтинг среди всех фильмов",
+    "formula": "MAX([Рейтинг])",
+    "alternatives": [],
+    "notes": "MAX"
+  },
+  {
+    "id": 31,
+    "category": "aggregation",
+    "question": "Найди год выпуска самого старого фильма в датасете",
+    "formula": "MIN([Год выпуска])",
+    "alternatives": [],
+    "notes": "MIN по integer"
+  },
+  {
+    "id": 32,
+    "category": "aggregation",
+    "question": "Вычисли медианную продолжительность фильмов",
+    "formula": "MEDIAN([Продолжительность, мин])",
+    "alternatives": [
+      "MEDIAN(\n    IF [Тип] = \"Фильм\"\n        THEN [Продолжительность, мин]\n    ELSE\n        NULL\n    END\n)"
+    ],
+    "notes": "MEDIAN"
+  },
+  {
+    "id": 33,
+    "category": "aggregation",
+    "question": "Посчитай суммарное число голосов по всем фильмам",
+    "formula": "SUM([Число голосов])",
+    "alternatives": [],
+    "notes": "SUM"
+  },
+  {
+    "id": 34,
+    "category": "aggregation",
+    "question": "Посчитай количество фильмов с рейтингом выше 7",
+    "formula": "COUNT_IF([Рейтинг] > 7)",
+    "alternatives": [
+      "SUM(IF([Рейтинг] > 7, 1, 0))",
+      "SUM_IF([Число фильмов], [Рейтинг] > 7)",
+      "SUM(\n    IF [Рейтинг] > 7\n        THEN 1\n    ELSE\n        0\n    END\n)"
+    ],
+    "notes": "COUNT_IF с условием; альтернативы — SUM(IF) и SUM_IF"
+  },
+  {
+    "id": 35,
+    "category": "lod",
+    "question": "Вычисли долю числа голосов текущей записи от общего суммарного числа голосов",
+    "formula": "SUM([Число голосов]) / SUM([Число голосов] FIXED)",
+    "alternatives": [
+      "[Число голосов] / SUM([Число голосов] TOTAL)",
+      "[Число голосов] / SUM([Число голосов] FIXED)"
+    ],
+    "notes": "FIXED без полей — одна группа для всех данных"
+  },
+  {
+    "id": 36,
+    "category": "lod",
+    "question": "Вычисли средний рейтинг по жанру (Жанр 1), игнорируя другие измерения на чарте",
+    "formula": "AVG([Рейтинг] FIXED [Жанр 1])",
+    "alternatives": [],
+    "notes": "FIXED с одним измерением"
+  },
+  {
+    "id": 37,
+    "category": "lod",
+    "question": "Посчитай количество фильмов в каждом жанре (Жанр 1), игнорируя другие измерения",
+    "formula": "COUNT([ИД] FIXED [Жанр 1])",
+    "alternatives": [
+      "COUNTD([Название] FIXED [Жанр 1])",
+      "COUNT([Название] FIXED [Жанр 1])",
+      "COUNT(1 FIXED [Жанр 1])",
+      "COUNT([Число фильмов] FIXED [Жанр 1])"
+    ],
+    "notes": "COUNT с FIXED; COUNTD — альтернатива если названия уникальны"
+  },
+  {
+    "id": 38,
+    "category": "lod",
+    "question": "Найди максимальный рейтинг по стране происхождения (Страна 1), игнорируя другие измерения",
+    "formula": "MAX([Рейтинг] FIXED [Страна 1])",
+    "alternatives": [],
+    "notes": "MAX с FIXED"
+  },
+  {
+    "id": 39,
+    "category": "lod",
+    "question": "Вычисли среднее число голосов по типу контента, игнорируя другие измерения",
+    "formula": "AVG([Число голосов] FIXED [Тип])",
+    "alternatives": [],
+    "notes": "AVG с FIXED"
+  },
+  {
+    "id": 40,
+    "category": "lod",
+    "question": "Посчитай сумму голосов до применения фильтра по жанру",
+    "formula": "SUM([Число голосов] BEFORE FILTER BY [Жанр 1])",
+    "alternatives": [
+      "SUM([Число голосов] BEFORE FILTER BY [Жанр 1], [Жанр 2], [Жанр 3])"
+    ],
+    "notes": "BEFORE FILTER BY"
+  },
+  {
+    "id": 41,
+    "category": "window",
+    "question": "Присвой каждому фильму ранг по среднему рейтингу среди всех записей",
+    "formula": "RANK(AVG([Рейтинг]) TOTAL)",
+    "alternatives": [
+      "RANK(AVG([Рейтинг]) TOTAL ORDER BY AVG([Рейтинг]) DESC)"
+    ],
+    "notes": "RANK с TOTAL; явный ORDER BY DESC — семантически эквивалентная альтернатива"
+  },
+  {
+    "id": 42,
+    "category": "window",
+    "question": "Присвой фильму ранг по среднему рейтингу внутри его жанра (Жанр 1)",
+    "formula": "RANK([Рейтинг] WITHIN [Жанр 1])",
+    "alternatives": [
+      "RANK(-[Рейтинг] WITHIN [Жанр 1])",
+      "RANK([Рейтинг], \"desc\" WITHIN [Жанр 1])"
+    ],
+    "notes": "RANK с WITHIN"
+  },
+  {
+    "id": 43,
+    "category": "window",
+    "question": "Вычисли долю суммы голосов текущей записи от суммарного числа голосов через оконную функцию",
+    "formula": "[Число голосов] / SUM([Число голосов] TOTAL)",
+    "alternatives": [
+      "[Число голосов] / SUM([Число голосов] WITHIN [Жанр 1])"
+    ],
+    "notes": "оконная агрегация SUM TOTAL для доли"
+  },
+  {
+    "id": 44,
+    "category": "window",
+    "question": "Вычисли скользящее среднее рейтинга с окном один период до и один после",
+    "formula": "MAVG(AVG([Рейтинг]), 1, 1)",
+    "alternatives": [
+      "MAVG(AVG([Рейтинг]), 1, 1 TOTAL ORDER BY [Год выпуска])",
+      "MAVG([Рейтинг], 1, 1 ORDER BY [Год выпуска])",
+      "MAVG([Рейтинг], 1, 1)"
+    ],
+    "notes": "MAVG(value, rows_before, rows_after)"
+  },
+  {
+    "id": 45,
+    "category": "window",
+    "question": "Вычисли нарастающую сумму числа голосов по всем записям с сортировкой по году выпуска",
+    "formula": "RSUM([Число голосов] TOTAL ORDER BY [Год выпуска])",
+    "alternatives": [
+      "RSUM([Число голосов], \"asc\" ORDER BY [Год выпуска])"
+    ],
+    "notes": "RSUM с TOTAL и ORDER BY"
+  },
+  {
+    "id": 47,
+    "category": "markup",
+    "question": "Отобрази название фильма жирным шрифтом",
+    "formula": "BOLD([Название])",
+    "alternatives": [],
+    "notes": "BOLD возвращает Markup"
+  },
+  {
+    "id": 48,
+    "category": "markup",
+    "question": "Раскрась отображение рейтинга: зелёный если ≥8, оранжевый если ≥6, красный иначе",
+    "formula": "IF [Рейтинг] >= 8\n    THEN COLOR(STR([Рейтинг]), \"green\")\nELSEIF [Рейтинг] >= 6\n    THEN COLOR(STR([Рейтинг]), \"orange\")\nELSE\n    COLOR(STR([Рейтинг]), \"red\")\nEND",
+    "alternatives": [
+      "IF [Рейтинг] >= 8\n    THEN COLOR(STR([Рейтинг]), \"#00aa00\")\nELSEIF [Рейтинг] >= 6\n    THEN COLOR(STR([Рейтинг]), \"#ffa500\")\nELSE\n    COLOR(STR([Рейтинг]), \"#ff0000\")\nEND",
+      "CASE\n    WHEN [Рейтинг] >= 8 THEN COLOR(STR([Рейтинг]), \"green\")\n    WHEN [Рейтинг] >= 6 THEN COLOR(STR([Рейтинг]), \"orange\")\n    ELSE COLOR(STR([Рейтинг]), \"red\")\nEND"
+    ],
+    "notes": "COLOR во всех ветках IF для единого типа Markup; COLOR нельзя в CONCAT"
+  },
+  {
+    "id": 49,
+    "category": "markup",
+    "question": "Создай разметку: название фильма, перенос строки, рейтинг со звёздочкой",
+    "formula": "MARKUP([Название], BR(), STR([Рейтинг]), \" ★\")",
+    "alternatives": [
+      "MARKUP([Название], BR(), STR([Рейтинг]), \"★\")",
+      "MARKUP([Название], BR(), [Рейтинг], \" ★\")",
+      "MARKUP([Название], BR(), [Рейтинг], \"★\")"
+    ],
+    "notes": "MARKUP принимает строки и markup-элементы; BR() — перенос строки"
+  },
+  {
+    "id": 50,
+    "category": "markup",
+    "question": "Создай ссылку на фильм на Кинопоиске, где текст ссылки — «Название (Год)»",
+    "formula": "URL(CONCAT(\"https://www.kinopoisk.ru/film/\", STR([ИД])), CONCAT([Название], \" (\", STR([Год выпуска]), \")\"))",
+    "alternatives": [
+      "URL(\"https://www.kinopoisk.ru/film/\" + STR([ИД]), [Название] + \" (\" + STR([Год выпуска]) + \")\")"
+    ],
+    "notes": "URL(адрес, текст); оба аргумента — строки; альтернатива — оператор + вместо CONCAT"
+  },
+  {
+    "id": 51,
+    "category": "combined",
+    "question": "Посчитай суммарное число голосов только для фильмов российского производства",
+    "formula": "SUM_IF([Число голосов], [Страна 1] = \"Россия\")",
+    "alternatives": [
+      "SUM(\n    IF [Страна 1] = \"Россия\" OR [Страна 2] = \"Россия\" OR [Страна 3] = \"Россия\"\n        THEN [Число голосов]\n        ELSE 0\n    END\n)"
+    ],
+    "notes": "aggregation + logic: SUM_IF с условием на строку; альтернативы — SUM(IF)"
+  },
+  {
+    "id": 52,
+    "category": "combined",
+    "question": "Вычисли средний рейтинг фильмов, набравших более 10 000 голосов",
+    "formula": "AVG_IF([Рейтинг], [Число голосов] > 10000)",
+    "alternatives": [],
+    "notes": "aggregation + logic: AVG_IF с числовым условием; альтернатива — AVG(IF)"
+  },
+  {
+    "id": 53,
+    "category": "combined",
+    "question": "Сформируй строку вида «Название (N лет)» — название фильма с его возрастом в годах",
+    "formula": "CONCAT([Название], \" (\", STR(YEAR(TODAY()) - [Год выпуска]), \" лет)\")",
+    "alternatives": [
+      "[Название] + \" (\" + STR(YEAR(TODAY()) - [Год выпуска]) + \" лет)\""
+    ],
+    "notes": "string + datetime + arithmetic: CONCAT + STR + YEAR + TODAY; альтернатива — оператор +"
+  },
+  {
+    "id": 54,
+    "category": "combined",
+    "question": "Определи, является ли жанр «топовым»: если средний рейтинг фильмов жанра не менее 7 — «Топ жанр», иначе «Обычный»",
+    "formula": "IF AVG([Рейтинг] FIXED [Жанр 1]) >= 7\n    THEN \"Топ жанр\"\nELSE\n    \"Обычный\"\nEND",
+    "alternatives": [],
+    "notes": "logic + aggregation: IF с агрегатом в условии"
+  },
+  {
+    "id": 55,
+    "category": "combined",
+    "question": "Определи, выше или ниже средний рейтинг текущей группы по сравнению со средним рейтингом её жанра (Жанр 1)",
+    "formula": "IF AVG([Рейтинг]) >= AVG([Рейтинг] FIXED [Жанр 1])\n    THEN \"Выше среднего по жанру\"\nELSE\n    \"Ниже среднего по жанру\"\nEND",
+    "alternatives": [
+      "IF AVG([Рейтинг]) > AVG([Рейтинг] FIXED [Жанр 1])\n    THEN \"Выше среднего по жанру\"\nELSEIF AVG([Рейтинг]) < AVG([Рейтинг] FIXED [Жанр 1])\n    THEN \"Ниже среднего по жанру\"\nELSE\n    \"Равен среднему по жанру\"\nEND"
+    ],
+    "notes": "lod + logic: сравнение текущего агрегата с LOD FIXED"
+  },
+  {
+    "id": 56,
+    "category": "combined",
+    "question": "Если фильм относится к жанру «драма» — добавь к названию метку « [Драма]», иначе оставь название как есть",
+    "formula": "IF CONTAINS([Жанры (списком)], \"драма\")\n    THEN CONCAT([Название], \" [Драма]\")\nELSE\n    [Название]\nEND",
+    "alternatives": [
+      "IF CONTAINS([Жанры (списком)], \"драма\")\n    THEN [Название] + \" [Драма]\"\nELSE\n    [Название]\nEND",
+      "IF [Жанр 1] = \"драма\" OR [Жанр 2] = \"драма\" OR [Жанр 3] = \"драма\"\n    THEN CONCAT([Название], \" [Драма]\")\nELSE\n    [Название]\nEND",
+      "IF [Жанр 1] = \"драма\"\n    THEN CONCAT([Название], \" [Драма]\")\nELSE\n    [Название]\nEND"
+    ],
+    "notes": "logic + string: IF + CONTAINS + CONCAT; альтернатива — оператор + вместо CONCAT"
+  },
+  {
+    "id": 57,
+    "category": "combined",
+    "question": "Если фильм длится 2 часа и более — выведи «Длинный (≥2ч)», иначе покажи длительность в часах с одним знаком после запятой",
+    "formula": "IF [Продолжительность, мин] / 60 >= 2\n    THEN \"Длинный (≥2ч)\"\nELSE\n    CONCAT(STR(ROUND([Продолжительность, мин] / 60, 1)), \" ч\")\nEND",
+    "alternatives": [
+      "IF [Продолжительность, мин] >= 120\n    THEN \"Длинный (≥2ч)\"\nELSE\n    CONCAT(STR(FLOAT([Продолжительность, мин]) / 60, \"#.#\"), \" ч\")\nEND",
+      "IF [Продолжительность, мин] >= 120\n    THEN \"Длинный (≥2ч)\"\nELSE\n    CONCAT(STR(ROUND([Продолжительность, мин] / 60, 1)), \" ч\")\nEND",
+      "IF [Продолжительность, мин] >= 120\n    THEN \"Длинный (≥2ч)\"\nELSE\n    STR(ROUND([Продолжительность, мин] / 60, 1)) + \" ч\"\nEND"
+    ],
+    "notes": "arithmetic + logic + string: деление в условии IF; альтернатива — сравнение с 120 напрямую"
+  },
+  {
+    "id": 58,
+    "category": "combined",
+    "question": "Вычисли долю голосов текущей группы от общего числа и оформи как строку с процентом (1 знак после запятой)",
+    "formula": "CONCAT(STR(ROUND([Число голосов] / SUM([Число голосов] FIXED) * 100, 1)), \"%\")",
+    "alternatives": [
+      "STR(ROUND([Число голосов] / SUM([Число голосов] FIXED) * 100, 1)) + \"%\"",
+      "CONCAT(ROUND(SUM([Число голосов]) / SUM(SUM([Число голосов]) FIXED) * 100, 1), \"%\")",
+      "CONCAT(STR(ROUND(SUM([Число голосов]) / SUM([Число голосов] FIXED) * 100, 1)), \"%\")",
+      "CONCAT(ROUND(([Число голосов] / SUM([Число голосов] TOTAL)) * 100, 1), \"%\")",
+      "CONCAT(STR(ROUND([Число голосов] / SUM([Число голосов] TOTAL) * 100, 1)), \"%\")"
+    ],
+    "notes": "lod + arithmetic + string: LOD FIXED + умножение + ROUND + STR + CONCAT; альтернатива — оператор +"
+  },
+  {
+    "id": 59,
+    "category": "combined",
+    "question": "Создай разметку: жирное название фильма, перенос строки, рейтинг — зелёным если ≥8, иначе красным",
+    "formula": "MARKUP(\n    BOLD([Название]),\n    BR(),\n    IF [Рейтинг] >= 8\n        THEN COLOR(STR([Рейтинг]), \"green\")\n        ELSE COLOR(STR([Рейтинг]), \"red\")\n    END\n)",
+    "alternatives": [
+      "MARKUP(\n    BOLD([Название]),\n    BR(),\n    COLOR(STR([Рейтинг]), IF([Рейтинг] >= 8, \"green\", \"red\"))\n)"
+    ],
+    "notes": "markup + logic + string: MARKUP + BOLD + BR + IF + COLOR + STR; все ветки IF возвращают Markup"
+  },
+  {
+    "id": 60,
+    "category": "combined",
+    "question": "Сформируй строку «Жанр: X.X» — название первого жанра и средний рейтинг фильмов этого жанра, округлённый до 1 знака",
+    "formula": "CONCAT([Жанр 1], \": \", STR(ROUND(AVG([Рейтинг] FIXED [Жанр 1]), 1)))",
+    "alternatives": [
+      "[Жанр 1] + \": \" + STR(ROUND(AVG([Рейтинг] FIXED [Жанр 1]), 1))",
+      "CONCAT(\"Жанр: \", [Жанр 1], \": \", STR(ROUND(AVG([Рейтинг]), 1)))"
+    ],
+    "notes": "string + lod + arithmetic: CONCAT + STR + ROUND + AVG FIXED; альтернатива — оператор +"
+  }
+]

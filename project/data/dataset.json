@@ -1,0 +1,144 @@
+{
+  "fields": [
+    {
+      "name": "Год выпуска",
+      "data_type": "Integer",
+      "field_type": "DIMENSION",
+      "description": "Год выпуска фильма или начало запуска первого сезона сериала",
+      "formula": "GET_ITEM(SPLIT([Годы], \"-\"), 1)"
+    },
+    {
+      "name": "Годы",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Годы, в течение которых выходил сериал",
+      "formula": ""
+    },
+    {
+      "name": "Дата обновления",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Дата обновления датасета",
+      "formula": ""
+    },
+    {
+      "name": "Жанр 1",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Первый (основной) жанр",
+      "formula": "GET_ITEM(SPLIT([Жанры (списком)], \",\"), 1)"
+    },
+    {
+      "name": "Жанр 2",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Второй (второстепенный) жанр",
+      "formula": "GET_ITEM(SPLIT([Жанры (списком)], \",\"), 2)"
+    },
+    {
+      "name": "Жанр 3",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Жанр, который указан третьим в списке",
+      "formula": "GET_ITEM(SPLIT([Жанры (списком)], \",\"), 3)"
+    },
+    {
+      "name": "Жанры (списком)",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Список жанров",
+      "formula": ""
+    },
+    {
+      "name": "ИД",
+      "data_type": "Integer",
+      "field_type": "DIMENSION",
+      "description": "ИД фильма на сайте kinopoisk.ru",
+      "formula": ""
+    },
+    {
+      "name": "Название",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Название фильма или сериала",
+      "formula": ""
+    },
+    {
+      "name": "Продолжительность, мин",
+      "data_type": "Integer",
+      "field_type": "DIMENSION",
+      "description": "Продолжительность фильма/сериала в минутах",
+      "formula": ""
+    },
+    {
+      "name": "Ссылка",
+      "data_type": "Markup",
+      "field_type": "DIMENSION",
+      "description": "Ссылка на сайт с фильмом на kinopoisk.ru. Используй по возможности во всех списках/рейтингах и таблицах",
+      "formula": "URL(CONCAT(\"https://www.kinopoisk.ru/film/\", STR([ИД])), [Название])"
+    },
+    {
+      "name": "Страна 1",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Основная страна",
+      "formula": "GET_ITEM(SPLIT([Страны (списком)], \",\"), 1)"
+    },
+    {
+      "name": "Страна 2",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Страна (вторая по списку)",
+      "formula": "GET_ITEM(SPLIT([Страны (списком)], \",\"), 2)"
+    },
+    {
+      "name": "Страна 3",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Страна (третья по списку)",
+      "formula": "GET_ITEM(SPLIT([Страны (списком)], \",\"),3)"
+    },
+    {
+      "name": "Страны (списком)",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Страны, выпустившие фильм. Перечислены списком",
+      "formula": ""
+    },
+    {
+      "name": "Тип",
+      "data_type": "String",
+      "field_type": "DIMENSION",
+      "description": "Тип (сериал/фильм/тв шоу/итд)",
+      "formula": "CASE [Тип (eng)]\n    WHEN \"film\" THEN \"Фильм\"\n    WHEN \"mini_series\" THEN \"Мини-сериал\"\n    WHEN \"tv_series\" THEN \"Сериал\"\n    WHEN \"tv_show\" THEN \"ТВ-шоу\"\n    WHEN \"video\" THEN \"Видео\"\n    ELSE \"Неизвестный тип\"\nEND"
+    },
+    {
+      "name": "Ранг (по рейтингу)",
+      "data_type": "Integer",
+      "field_type": "MEASURE",
+      "description": "Для фильтрации топ-N фильмов по рейтингу",
+      "formula": "Rank([Рейтинг])"
+    },
+    {
+      "name": "Рейтинг",
+      "data_type": "Float",
+      "field_type": "MEASURE",
+      "description": "Средний рейтинг",
+      "formula": ""
+    },
+    {
+      "name": "Число голосов",
+      "data_type": "Float",
+      "field_type": "MEASURE",
+      "description": "Число голосов",
+      "formula": ""
+    },
+    {
+      "name": "Число фильмов",
+      "data_type": "Integer",
+      "field_type": "MEASURE",
+      "description": "Число фильмов (количество строк в датасете)",
+      "formula": "COUNT(1)"
+    }
+  ]
+}
